@@ -68,7 +68,7 @@ According to the [inequality of arithmetic and geometric means],
 fixed radix systems will achieve the best length.
 
 | Position Number | Choosed Radices | Maximum Number| Maximum Length
-| - | - | - | -
+| --- | --- | --- | ---
 | 3 | 26 26 10 (Example 1) | 6759 | 20280 B = 19 KiB
 | 3 | 21 21 20 ( Example 2) | 8819 | 26460 B = 25 KiB
 | 4 | 16 16 15 15 (Example 3) | 57599 | 230400 B = 225 KiB
