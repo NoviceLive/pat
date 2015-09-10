@@ -53,10 +53,7 @@ main(int argc, char **argv)
   for (int i = 0; i < position_count; ++i)
     printf("Position %d: %s\n", i, space[i]);
 
-  const size_t buffer_size = 1024;
-  char buffer[buffer_size];
-
-  unsigned int radices[position_count];
+  int radices[position_count];
   get_mixed_radices(space, radices, position_count);
   int max = get_mixed_max(radices, position_count)
     * position_count + position_count;
@@ -118,7 +115,7 @@ main(int argc, char **argv)
       }
     }
 
-    unsigned int values[position_count];
+    int values[position_count];
     get_mixed_values(keyword, space, values);
 
     printf("%s", "Radices: ");
