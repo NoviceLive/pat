@@ -5,6 +5,7 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <string.h>
 
 # include "libhex.h"
 
@@ -15,8 +16,12 @@ main(int argc, char **argv)
     printf("%s\n", "Invalid Argument!");
     return EXIT_FAILURE;
   }
+  size_t length = strlen(argv[1]);
 
-  printf("%s\n", unhex(argv[1]));
+  unhex(argv[1]);
+
+  for (int i = 0; i < length / 2; ++i)
+    putchar(argv[1][i]);
 
   return EXIT_SUCCESS;
 }

@@ -23,10 +23,11 @@ print_hex(char *string)
 char *
 unhex(char *string)
 {
+  size_t length = strlen(string);
   char temp[3] = { 0 };
   int i;
 
-  for (i = 0; i < strlen(string); i += 2) {
+  for (i = 0; i < length; i += 2) {
     strncpy(temp, string + i, 2);
     string[i / 2] = (char)strtoul(temp, NULL, 16);
   }
