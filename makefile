@@ -1,3 +1,10 @@
+FLAGS = -Wall
+
+CC = gcc ${FLAGS}
+WINCC32 = i686-w64-mingw32-gcc ${FLAGS}
+WINCC64 = x86_64-w64-mingw32-gcc ${FLAGS}
+
+
 all:
 	make pattern
 	make windows
@@ -10,6 +17,7 @@ install: pattern
 
 
 installall: pattern hex
+	sudo cp ./pattern /usr/bin/pattern
 	sudo cp ./pat3.sh /usr/bin/pat3
 	sudo cp ./pat4.sh /usr/bin/pat4
 	sudo cp ./pat8.sh /usr/bin/pat8
@@ -18,30 +26,30 @@ installall: pattern hex
 
 
 pattern: mixedradix.o libhex.o pattern.c
-	gcc -o pattern mixedradix.o libhex.o pattern.c
+	${CC} -o pattern mixedradix.o libhex.o pattern.c
 
 
 windows:
-	i686-w64-mingw32-gcc pattern.c mixedradix.c libhex.c -o pattern32.exe
-	x86_64-w64-mingw32-gcc pattern.c mixedradix.c libhex.c -o pattern64.exe
+	 ${WINCC32} pattern.c mixedradix.c libhex.c -o pattern32.exe
+	 ${WINCC64} pattern.c mixedradix.c libhex.c -o pattern64.exe
 
 
 hex: hex.c unhex.c libhex.o
-	gcc -o hex hex.c libhex.o
-	gcc -o unhex unhex.c libhex.o
+	${CC} -o hex hex.c libhex.o
+	${CC} -o unhex unhex.c libhex.o
 
 
 test: mixedradix.o mixedradix-test.c rotate_string-test.c
-	gcc -o test-mixedradix mixedradix-test.c mixedradix.o
-	gcc -o test-rotate_string rotate_string-test.c mixedradix.o
+	${CC} -o test-mixedradix mixedradix-test.c mixedradix.o
+	${CC} -o test-rotate_string rotate_string-test.c mixedradix.o
 
 
 mixedradix.o: mixedradix.c mixedradix.h
-	gcc -c mixedradix.c
+	${CC} -c mixedradix.c
 
 
 libhex.o: libhex.c libhex.h
-	gcc -c libhex.c
+	${CC} -c libhex.c
 
 
 clean:
