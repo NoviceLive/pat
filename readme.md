@@ -130,7 +130,10 @@ Test is done through self-test.
 But note that it only tests the default profile.
 
 ```bash
-./self-test.sh
+tests/self-test.sh  # Passed
+tests/self-test3.sh # Passed
+tests/self-test4.sh # WARNING: FAILED
+tests/self-test8.sh # WARNING: FAILED
 ```
 
 ## Fix Me
@@ -145,6 +148,8 @@ like `decimal_to_mixed` remains undecided.
 ### decrement_mixed_string
 
 It will not decrement any mixed string by one.
+
+__WARNING: UNFIXED KNOWN BUGS EXIST AS IN PAT4 & PAT8!__
 
 ## Copyright
 
