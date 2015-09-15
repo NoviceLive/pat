@@ -9,7 +9,6 @@ all:
 	make pattern
 	make windows
 	make hex
-	make test
 
 
 install: pattern
@@ -39,11 +38,6 @@ hex: hex.c unhex.c libhex.o
 	${CC} -o unhex unhex.c libhex.o
 
 
-test: mixedradix.o mixedradix-test.c rotate_string-test.c
-	${CC} -o test-mixedradix mixedradix-test.c mixedradix.o
-	${CC} -o test-rotate_string rotate_string-test.c mixedradix.o
-
-
 mixedradix.o: mixedradix.c mixedradix.h
 	${CC} -c mixedradix.c
 
@@ -53,4 +47,4 @@ libhex.o: libhex.c libhex.h
 
 
 clean:
-	rm -f pattern hex unhex test-mixedradix test-rotate_string *.o *.exe
+	rm -f pattern hex unhex *.o *.exe

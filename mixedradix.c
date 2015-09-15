@@ -98,10 +98,16 @@ decrement_mixed_string(char *mixed, char **space)
   if (pos < 0) {
     mixed[digit_no - 1] =
       space[digit_no - 1][strlen(space[digit_no - 1]) - 1];
+
     for (int i = digit_no - 2; i >= 0; --i) {
-      pos = strcspn(space[i], mixed + i);
-      pos -= 1;
-      mixed[i] = space[i][pos];
+      pos = strcspn(space[i], mixed + i) - 1;
+      if (pos < 0) {
+        mixed[i] = space[i][strlen(space[i]) - 1];
+      }
+      else {
+        mixed[i] = space[i][pos];
+        break;
+      }
     }
   }
   else {
