@@ -166,11 +166,11 @@ Copyright 2015 Gu Zhengxiong <rectigu@gmail.com>
 
 See license.txt.
 
-[positional numeral system]: https://en.wikipedia.org/wiki/Positional_notation
-[Cartesian product]: TODO
-[inequality of arithmetic and geometric means]: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
-[mixed radix numeral system]: https://en.wikipedia.org/wiki/Mixed_radix
-
 ## Related Projects
 
 - [Svenito/exploit-pattern](https://github.com/Svenito/exploit-pattern)
+
+[positional numeral system]: https://en.wikipedia.org/wiki/Positional_notation
+[Cartesian product]: https://en.wikipedia.org/wiki/Cartesian_product
+[inequality of arithmetic and geometric means]: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+[mixed radix numeral system]: https://en.wikipedia.org/wiki/Mixed_radix
