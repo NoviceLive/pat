@@ -4,6 +4,8 @@ CC = gcc ${FLAGS}
 WINCC32 = i686-w64-mingw32-gcc ${FLAGS}
 WINCC64 = x86_64-w64-mingw32-gcc ${FLAGS}
 
+BINDIR = bin
+
 
 all:
 	make pattern
@@ -16,26 +18,26 @@ install: pattern
 
 
 installall: pattern hex
-	sudo cp ./pattern /usr/bin/pattern
+	sudo cp ./${BINDIR}/pattern /usr/bin/pattern
 	sudo cp ./pat3.sh /usr/bin/pat3
 	sudo cp ./pat4.sh /usr/bin/pat4
 	sudo cp ./pat8.sh /usr/bin/pat8
-	sudo cp ./hex /usr/bin/hex
-	sudo cp ./unhex /usr/bin/unhex
+	sudo cp ./${BINDIR}/hex /usr/bin/hex
+	sudo cp ./${BINDIR}/unhex /usr/bin/unhex
 
 
 pattern: mixedradix.o libhex.o pattern.c
-	${CC} -o pattern mixedradix.o libhex.o pattern.c
+	${CC} -o ${BINDIR}/pattern mixedradix.o libhex.o pattern.c
 
 
 windows:
-	 ${WINCC32} pattern.c mixedradix.c libhex.c -o pattern32.exe
-	 ${WINCC64} pattern.c mixedradix.c libhex.c -o pattern64.exe
+	 ${WINCC32} pattern.c mixedradix.c libhex.c -o ${BINDIR}/pattern32.exe
+	 ${WINCC64} pattern.c mixedradix.c libhex.c -o ${BINDIR}/pattern64.exe
 
 
 hex: hex.c unhex.c libhex.o
-	${CC} -o hex hex.c libhex.o
-	${CC} -o unhex unhex.c libhex.o
+	${CC} -o ${BINDIR}/hex hex.c libhex.o
+	${CC} -o ${BINDIR}/unhex unhex.c libhex.o
 
 
 mixedradix.o: mixedradix.c mixedradix.h
@@ -47,4 +49,4 @@ libhex.o: libhex.c libhex.h
 
 
 clean:
-	rm -f pattern hex unhex *.o *.exe
+	rm -f ${BINDIR}

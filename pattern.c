@@ -50,14 +50,14 @@ main(int argc, char **argv)
     return EXIT_FAILURE;
   }
 
-  for (int i = 0; i < position_count; ++i)
-    printf("Position %d: %s\n", i, space[i]);
+  /* for (int i = 0; i < position_count; ++i) */
+  /*   printf("Position %d: %s\n", i, space[i]); */
 
   int radices[position_count];
   get_mixed_radices(space, radices, position_count);
   int max = get_mixed_max(radices, position_count)
     * position_count + position_count;
-  printf("Capacity: %d\n", max);
+  /* printf("Capacity: %d\n", max); */
 
   if (is_type_string(keyword, isdigit)) {
     errno = 0;
@@ -68,7 +68,7 @@ main(int argc, char **argv)
       return EXIT_FAILURE;
     }
 
-    printf("Requested: %d\n", length);
+    /* printf("Requested: %d\n", length); */
 
     if (length > max) {
       printf("Invalid Length\n");
@@ -79,7 +79,7 @@ main(int argc, char **argv)
     char current[position_count];
     current[position_count - 1] = '\0';
 
-    printf("%s", "Pattern: ");
+    /* printf("%s", "Pattern: "); */
     print_pattern(&length, &printed, space,
                   position_count, current, 0);
     putchar('\n');
