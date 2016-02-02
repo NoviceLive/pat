@@ -12,16 +12,18 @@
 int
 main(int argc, char **argv)
 {
+  size_t length;
+  size_t i;
   if (argc != 2) {
     printf("%s\n", "Invalid Argument!");
     return EXIT_FAILURE;
   }
-  size_t length = strlen(argv[1]);
+  length = strlen(argv[1]);
 
-  unhex(argv[1]);
+  (void)unhex(argv[1]);
 
-  for (int i = 0; i < length / 2; ++i)
-    putchar(argv[1][i]);
+  for (i = 0; i < length / 2; ++i)
+    (void)putchar(argv[1][i]);
 
   return EXIT_SUCCESS;
 }
