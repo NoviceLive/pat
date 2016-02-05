@@ -1,5 +1,6 @@
 # Customizable Exploit Pattern Utility
 
+
 ## Installation
 
 This repository is accompanied with prebuilt binaries
@@ -14,6 +15,7 @@ of variable length arrays, etc.
 Download the binary for your system
 and add the directory which contains it to the shell's search path
 so as to invoke it simply by typing `pattern`.
+
 
 ## Basic Usage
 
@@ -30,6 +32,7 @@ Compute the offset of the pattern z8Z in the default radices
 ```bash
 pattern z8Z
 ```
+
 
 ## Using Customized Radices
 
@@ -55,6 +58,7 @@ Note that since the program assumes a keyword of pure numbers
 as the pattern length to create,
 you can not use spaces containing mere numbers.
 
+
 ## Mathematical Background
 
 Simply speaking, it is a string of continuous numbers
@@ -64,6 +68,7 @@ often with a big radix.
 
 It can be created by taking the needed count of characters
 from the [Cartesian product] of chosen character sets.
+
 
 ## Comparison Of Different Radices
 
@@ -86,13 +91,13 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
 0123456789
 ```
-Example 2 (see [pat3.sh](./pat3.sh))
+Example 2 (see [pat3.sh](./sh/pat3.sh))
 ```
 ABCDEFGHIJKLMNOPQRSTU
 VWXYZabcdefghijklmnop
 qrstuvwxyz0123456789
 ```
-Example 3 (see [pat4.sh](./pat4.sh))
+Example 3 (see [pat4.sh](./sh/pat4.sh))
 ```
 ABCDEFGHIJKLMNOP
 QRSTUVWXYZabcdef
@@ -100,7 +105,7 @@ ghijklmnopqrstu
 vwxyz0123456789
 
 ```
-Example 4 (see [pat8.sh](./pat8.sh))
+Example 4 (see [pat8.sh](./sh/pat8.sh))
 ```
 ABCDEFGH
 IJKLMNOP
@@ -111,6 +116,7 @@ opqrstuv
 wxyz012
 3456789
 ```
+
 
 ## Caveats
 
@@ -130,16 +136,15 @@ In other words, all radices given to the program will be treated
 as mixed radix numeral systems,
 even they are actually fixed radix ones.
 
+
 ## Test Suites
 
 Test is done through self-test.
 
 ```bash
-tests/self-test.sh  # Passed.
-tests/self-test3.sh # Passed.
-tests/self-test4.sh # Passed.
-tests/self-test8.sh # Didn't run this test due to its computing density.
+tests/self-test.sh  # Watch out for computing density!
 ```
+
 
 ## To Be Improved
 
@@ -150,6 +155,7 @@ whether to keep the recursive version
 or to reimplement another one based on something
 like `decimal_to_mixed` remains undecided.
 
+
 ### decrement_mixed_string
 
 Decrement a mixed string by one.
@@ -158,17 +164,16 @@ How to implement it elegantly?
 
 What principles or mathematical operations are under the hood?
 
+
 ## Copyright
 
 Copyright 2015 Gu Zhengxiong <rectigu@gmail.com>
+
 
 ## License
 
 See license.txt.
 
-## Related Projects
-
-- [Svenito/exploit-pattern](https://github.com/Svenito/exploit-pattern)
 
 [positional numeral system]: https://en.wikipedia.org/wiki/Positional_notation
 [Cartesian product]: https://en.wikipedia.org/wiki/Cartesian_product

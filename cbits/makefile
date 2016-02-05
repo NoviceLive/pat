@@ -4,7 +4,7 @@ CC = gcc ${FLAGS}
 WINCC32 = i686-w64-mingw32-gcc ${FLAGS}
 WINCC64 = x86_64-w64-mingw32-gcc ${FLAGS}
 
-BINDIR = bin
+BINDIR = ../bin
 
 
 all:
