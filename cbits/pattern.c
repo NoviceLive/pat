@@ -86,16 +86,16 @@ main(int argc, char **argv)
   }
   else {
     if (!memcmp(keyword, "0x", 2)) {
-      printf("Hexadecimal: %s\n", keyword);
+      /* printf("Hexadecimal: %s\n", keyword); */
       keyword = unhex(keyword + 2);
-      printf("Unhexed: %s\n", keyword);
+      /* printf("Unhexed: %s\n", keyword); */
       reverse_string(keyword, 0, strlen(keyword) - 1);
-      printf("Reversed: %s\n", keyword);
+      /* printf("Reversed: %s\n", keyword); */
     }
 
     if (strlen(keyword) >= position_count) {
       keyword[position_count] = 0;
-      printf("Pattern: %s\n", keyword);
+      /* printf("Pattern: %s\n", keyword); */
     }
     else {
       printf("Invalid Pattern: %s\n", keyword);
@@ -106,8 +106,8 @@ main(int argc, char **argv)
 
     if (!check_mixed_string(keyword, space)) {
       adjustment = adjust_mixed_string(keyword, space);
-      printf("Adjusted: %s\n", keyword);
-      printf("Adjustment: %u\n", adjustment);
+      /* printf("Adjusted: %s\n", keyword); */
+      /* printf("Adjustment: %u\n", adjustment); */
 
       if (!check_mixed_string(keyword, space)) {
         printf("Invalid Pattern: %s\n", keyword);
@@ -118,17 +118,18 @@ main(int argc, char **argv)
     int values[position_count];
     get_mixed_values(keyword, space, values);
 
-    printf("%s", "Radices: ");
-    print_array(radices, position_count);
-    printf("%s", "Values: ");
-    print_array(values, position_count);
+    /* printf("%s", "Radices: "); */
+    /* print_array(radices, position_count); */
+    /* printf("%s", "Values: "); */
+    /* print_array(values, position_count); */
 
     unsigned decimal = mixed_to_decimal(radices,
                                         values,
                                         position_count);
     unsigned offset = decimal * position_count + adjustment;
-    printf("Decimal: %u\n", decimal);
-    printf("Offset: %u\n", offset);
+    /* printf("Decimal: %u\n", decimal); */
+    /* printf("Offset: %u\n", offset); */
+    printf("%u\n", offset);
   }
 
   return EXIT_SUCCESS;

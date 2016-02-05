@@ -14,11 +14,11 @@ all:
 
 
 install: pattern
-	sudo cp ./pattern /usr/bin/pattern
+	sudo cp ./${BINDIR}/pattern /usr/bin/pattern
 
 
 installall: pattern hex
-	sudo cp ./${BINDIR}/pattern /usr/bin/pattern
+	make install
 	sudo cp ./pat3.sh /usr/bin/pat3
 	sudo cp ./pat4.sh /usr/bin/pat4
 	sudo cp ./pat8.sh /usr/bin/pat8
