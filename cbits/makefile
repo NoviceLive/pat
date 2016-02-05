@@ -27,26 +27,31 @@ installall: pattern hex
 
 
 pattern: mixedradix.o libhex.o pattern.c
-	${CC} -o ${BINDIR}/pattern mixedradix.o libhex.o pattern.c
+	${CC} -o ${BINDIR}/pattern \
+		${BINDIR}/mixedradix.o ${BINDIR}/libhex.o pattern.c
 
 
 windows:
-	 ${WINCC32} pattern.c mixedradix.c libhex.c -o ${BINDIR}/pattern32.exe
-	 ${WINCC64} pattern.c mixedradix.c libhex.c -o ${BINDIR}/pattern64.exe
+	 ${WINCC32} pattern.c mixedradix.c libhex.c \
+		-o ${BINDIR}/pattern32.exe
+	 ${WINCC64} pattern.c mixedradix.c libhex.c \
+		-o ${BINDIR}/pattern64.exe
 
 
 hex: hex.c unhex.c libhex.o
-	${CC} -o ${BINDIR}/hex hex.c libhex.o
-	${CC} -o ${BINDIR}/unhex unhex.c libhex.o
+	${CC} -o ${BINDIR}/hex hex.c ${BINDIR}/libhex.o
+	${CC} -o ${BINDIR}/unhex unhex.c ${BINDIR}/libhex.o
 
 
 mixedradix.o: mixedradix.c mixedradix.h
-	${CC} -c mixedradix.c
+	mkdir -p ${BINDIR}
+	${CC} -c mixedradix.c -o ${BINDIR}/mixedradix.o
 
 
 libhex.o: libhex.c libhex.h
-	${CC} -c libhex.c
+	mkdir -p ${BINDIR}
+	${CC} -c libhex.c -o ${BINDIR}/libhex.o
 
 
 clean:
-	rm -f ${BINDIR}
+	rm -rf ${BINDIR}

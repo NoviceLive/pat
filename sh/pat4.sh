@@ -2,12 +2,11 @@
 
 
 #
-# Copyright 2015 Gu Zhengxiong <rectigu@gmail.com>
+# Copyright 2015-2016 Gu Zhengxiong <rectigu@gmail.com>
 #
 
 
-if [[ $# -ne 1 ]]
-then
+if [[ $# -ne 1 ]]; then
     printf '%s\n' 'Invalid Argument!'
     exit 233
 fi
@@ -17,4 +16,4 @@ pattern \
     ABCDEFGHIJKLMNOP \
     QRSTUVWXYZabcdef \
     ghijklmnopqrstu \
-    vwxyz0123456789 $1
+    vwxyz0123456789 "${1}"
