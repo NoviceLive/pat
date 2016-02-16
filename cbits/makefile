@@ -5,6 +5,7 @@ WINCC32 = i686-w64-mingw32-gcc ${FLAGS}
 WINCC64 = x86_64-w64-mingw32-gcc ${FLAGS}
 
 BINDIR = ../bin
+SHDIR = ../sh
 
 
 all:
@@ -14,16 +15,16 @@ all:
 
 
 install: pattern
-	sudo cp ./${BINDIR}/pattern /usr/bin/pattern
+	sudo cp ${BINDIR}/pattern /usr/bin/pattern
 
 
 installall: pattern hex
 	make install
-	sudo cp ./pat3.sh /usr/bin/pat3
-	sudo cp ./pat4.sh /usr/bin/pat4
-	sudo cp ./pat8.sh /usr/bin/pat8
-	sudo cp ./${BINDIR}/hex /usr/bin/hex
-	sudo cp ./${BINDIR}/unhex /usr/bin/unhex
+	sudo cp ${SHDIR}/pat3.sh /usr/bin/pat3
+	sudo cp ${SHDIR}/pat4.sh /usr/bin/pat4
+	sudo cp ${SHDIR}/pat8.sh /usr/bin/pat8
+	sudo cp ${BINDIR}/hex /usr/bin/hex
+	sudo cp ${BINDIR}/unhex /usr/bin/unhex
 
 
 pattern: mixedradix.o libhex.o pattern.c
