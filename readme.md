@@ -1,6 +1,9 @@
 # Customizable Exploit Pattern Utility
 
 
+[Python version](pybits/).
+
+
 ## Installation
 
 This repository is accompanied with prebuilt binaries
