@@ -2,9 +2,6 @@ Customizable Exploit Pattern Utility
 ====================================
 
 
-See the readme_ of C version for more information
-such as mathematical background and **profiles**.
-
 See the code_ if you are eager.
 
 
@@ -17,6 +14,73 @@ Installation
 ------------
 
 ``pip install pat`` works, elevate privilege if necessary.
+
+
+Mathematical Background
+-----------------------
+
+
+Simply speaking, it is a string of continuous numbers
+in some special `positional numeral systems`_,
+where symbols in each position are mutually unique,
+often with a big radix.
+
+It can be created by taking the needed count of characters
+from the `Cartesian product`_ of chosen character sets.
+
+
+Profiles
+--------
+
+Default Profile
++++++++++++++++
+
+- Three-radix
+
+  - Maximum Length: 20280 B = 19 KiB.
+
+  ::
+
+     ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
+
+
+Optimal Profiles
+++++++++++++++++
+
+Suppose that we have a limited set of characters,
+e.g. alphanumeric ones, in which there are 62 characters available.
+
+According to the `inequality of arithmetic and geometric means`_,
+fixed radix systems will achieve the best length.
+
+
+Three-radix
+___________
+
+- Maximum Length: 26460 B = 25 KiB
+
+::
+
+   ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
+
+Four-radix
+__________
+
+- Maximum Length: 230400 B = 225 KiB
+
+::
+
+   ABCDEFGHIJKLMNOP QRSTUVWXYZabcdef ghijklmnopqrstu vwxyz0123456789
+
+
+Eight-radix
+___________
+
+- Maximum Length: 102760448 B = 98 MiB
+
+::
+
+   ABCDEFGH IJKLMNOP QRSTUVWX YZabcdef ghijklmn opqrstuv wxyz012 3456789
 
 
 Usage
@@ -69,3 +133,10 @@ Examples
 
      ./pat.py vAY ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
      197
+
+
+.. _positional numeral systems: https://en.wikipedia.org/wiki/Positional_notation
+
+.. _Cartesian product: https://en.wikipedia.org/wiki/Cartesian_product
+
+.. _inequality of arithmetic and geometric means: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
