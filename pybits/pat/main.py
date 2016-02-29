@@ -19,7 +19,7 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import sys
-from itertools import product, islice
+from itertools import product
 from string import digits, ascii_lowercase, ascii_uppercase
 from binascii import unhexlify
 
@@ -35,6 +35,7 @@ from . import __version__, PROGRAM_NAME
 @click.argument('argument', required=True)
 @click.argument('sets', nargs=-1, required=False)
 def main(argument, sets):
+    """Customizable Exploit Pattern Utility."""
     if sets:
         space = sets
     else:
