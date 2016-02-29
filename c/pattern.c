@@ -37,18 +37,18 @@ main(int argc, char **argv)
 
   if (argc == 2) {
     space = default_profile;
-    keyword = argv[1];
     position_count = default_position_count;
   }
   else if (argc > 2) {
-    space = argv + 1;
-    keyword = argv[argc - 1];
+    space = argv + 2;
     position_count = argc - 1 - 1;
   }
   else {
     printf("%s\n", "Invalid Argument!");
     return EXIT_FAILURE;
   }
+
+  keyword = argv[1];
 
   for (int i = 0; i < position_count; ++i)
     fprintf(stderr, "Position %d: %s\n", i, space[i]);

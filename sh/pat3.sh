@@ -11,7 +11,6 @@ if [[ $# -ne 1 ]]; then
 fi
 
 
-pattern \
-    ABCDEFGHIJKLMNOPQRSTU \
-    VWXYZabcdefghijklmnop \
-    qrstuvwxyz0123456789 "${1}"
+pattern "${1}" \
+        ABCDEFGHIJKLMNOPQRSTU \
+        VWXYZabcdefghijklmnop qrstuvwxyz0123456789

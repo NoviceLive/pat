@@ -1,7 +1,7 @@
 # Customizable Exploit Pattern Utility
 
 
-[Python version](pybits/).
+[Python version](py/). (Warning: It's eager for the time being.)
 
 
 ## Installation
@@ -42,10 +42,10 @@ pattern z8Z
 Syntax:
 
 ```bash
-pattern space_0 space_1 space_2 ... space_n keyword
+pattern keyword space_0 space_1 space_2 ... space_n
 ```
 
-All but the last arguments together will be treated as radices.
+All but the first arguments together will be treated as radices.
 The last argument will be treated as the keyword,
 which can be either a number indicating the pattern length
 to generate or a pattern to compute the corresponding offset.
@@ -53,8 +53,8 @@ to generate or a pattern to compute the corresponding offset.
 The default radices (when you invoke the program with
 only one argument) is equivalent to the following invocation:
 
-```bash
-pattern ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 keyword
+```
+pattern keyword ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789
 ```
 
 Note that since the program assumes a keyword of pure numbers
