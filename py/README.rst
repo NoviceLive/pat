@@ -2,14 +2,6 @@ Customizable Exploit Pattern Utility
 ====================================
 
 
-See the code_ if you are eager.
-
-
-.. _readme: ../readme.md
-
-.. _code: https://github.com/NoviceLive/pat/blob/master/pybits/pat/main.py#L37
-
-
 Installation
 ------------
 
