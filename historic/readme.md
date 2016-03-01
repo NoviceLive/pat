@@ -1,7 +1,7 @@
 # Customizable Exploit Pattern Utility
 
 
-[Python version](py/).
+[Newer Python version](../). (It uses a different locating method.)
 
 
 ## Installation

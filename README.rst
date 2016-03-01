@@ -2,6 +2,9 @@ Customizable Exploit Pattern Utility
 ====================================
 
 
+`Old C Version <historic/>`_. (It uses a different locating method.)
+
+
 Installation
 ------------
 
