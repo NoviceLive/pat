@@ -19,7 +19,7 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 
 __author__ = 'Gu Zhengxiong'
-__version__ = '0.1.0'
+__version__ = '0.3.0'
 
 
 PROGRAM_NAME = 'Pat'

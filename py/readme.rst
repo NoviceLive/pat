@@ -35,7 +35,7 @@ Profiles
 Default Profile
 +++++++++++++++
 
-- Three-radix
+- Three-position: The most popular choice
 
   - Maximum Length: 20280 B = 19 KiB.
 
@@ -54,8 +54,8 @@ According to the `inequality of arithmetic and geometric means`_,
 fixed radix systems will achieve the best length.
 
 
-Three-radix
-___________
+Three-position
+______________
 
 - Maximum Length: 26460 B = 25 KiB
 
@@ -63,8 +63,8 @@ ___________
 
    ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
 
-Four-radix
-__________
+Four-position
+_____________
 
 - Maximum Length: 230400 B = 225 KiB
 
@@ -73,8 +73,8 @@ __________
    ABCDEFGHIJKLMNOP QRSTUVWXYZabcdef ghijklmnopqrstu vwxyz0123456789
 
 
-Eight-radix
-___________
+Eight-position
+______________
 
 - Maximum Length: 102760448 B = 98 MiB
 
@@ -120,14 +120,14 @@ Examples
      ./pat.py 0x5a6232
      19536
 
-- Create a pattern of length 200 in optimal 3-radix profile.
+- Create a pattern of length 200 in optimal 3-position profile.
 
   ::
 
      ./pat.py 200 ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
      AVqAVrAVsAVtAVuAVvAVwAVxAVyAVzAV0AV1AV2AV3AV4AV5AV6AV7AV8AV9AWqAWrAWsAWtAWuAWvAWwAWxAWyAWzAW0AW1AW2AW3AW4AW5AW6AW7AW8AW9AXqAXrAXsAXtAXuAXvAXwAXxAXyAXzAX0AX1AX2AX3AX4AX5AX6AX7AX8AX9AYqAYrAYsAYtAYuAYvAY
 
-- Search for pattern ``vAY`` in optimal 3-radix profile.
+- Search for pattern ``vAY`` in optimal 3-position profile.
 
   ::
 

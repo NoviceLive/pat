@@ -19,13 +19,17 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import sys
-from itertools import product
+from itertools import product, chain, islice
+from functools import reduce
+from operator import mul
 from string import digits, ascii_lowercase, ascii_uppercase
 from binascii import unhexlify
 
 import click
+from pyperclip import copy
 
 from . import __version__, PROGRAM_NAME
+from .utils import chunked_even, window
 
 
 @click.command(
@@ -33,18 +37,32 @@ from . import __version__, PROGRAM_NAME
 @click.version_option(__version__,
                       '-V', '--version', prog_name=PROGRAM_NAME)
 @click.argument('argument', required=True)
-@click.argument('sets', nargs=-1, required=False)
-def main(argument, sets):
+@click.argument('sets', nargs=-1)
+@click.option('-O', '--optimal', type=int,
+              help='Use the optimal profile in this position.')
+@click.option('-o', '--output', type=click.File('w'),
+              help='Write to this file.')
+@click.option('-c', '--clipboard', is_flag=True,
+              help='Output to the clipboard.')
+def main(argument, sets, optimal, output, clipboard):
     """Customizable Exploit Pattern Utility."""
-    if sets:
+    space = [ascii_uppercase, ascii_lowercase, digits]
+    if optimal:
+        space = chunked_even(''.join(space), optimal)
+    elif sets:
         space = sets
-    else:
-        space = [ascii_uppercase, ascii_lowercase, digits]
-    patterns = ''.join(map(''.join, product(*space)))
+    patterns = chain.from_iterable(map(''.join, product(*space)))
+    limit = reduce(mul, map(len, space)) * len(space)
     if argument.isdigit():
         count = int(argument)
-        if len(patterns) >= count:
-            print(patterns[:count])
+        if limit >= count:
+            needed = ''.join(islice(patterns, count))
+            if output:
+                output.write(needed)
+            elif clipboard:
+                copy(needed)
+            else:
+                print(needed)
         else:
             print('Count {} Overflows Space {}!'.format(count, space))
             sys.exit(1)
@@ -53,9 +71,12 @@ def main(argument, sets):
             target = unhexlify(argument[2:]).decode('utf-8')
         else:
             target = argument
-        try:
-            print(patterns.index(target))
-        except ValueError:
+        found = False
+        for index, one in enumerate(window(patterns, len(space))):
+            if target[:len(space)] == ''.join(one):
+                print(index)
+                found = True
+        if not found:
             print('Target {} Not Found In Space {}!'.format(
                 target, space))
             sys.exit(1)

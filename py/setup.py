@@ -29,7 +29,7 @@ setup(
     name=PROGRAM_NAME,
     version=__version__,
     packages=[PACKAGE_NAME],
-    install_requires=['click'],
+    install_requires=['click', 'fn', 'pyperclip'],
     entry_points={
         'console_scripts': [
             'pat={}.main:main'.format(PACKAGE_NAME)

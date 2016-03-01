@@ -1,13 +1,13 @@
 # Customizable Exploit Pattern Utility
 
 
-[Python version](py/). (Warning: It's eager for the time being.)
+[Python version](py/).
 
 
 ## Installation
 
 This repository is accompanied with prebuilt binaries
-for both Linux (x64 only) and Windows.
+for both Linux and Windows, either x86 or x64.
 
 Note that the Windows binaries are cross compiled via mingw-w64.
 
