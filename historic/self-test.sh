@@ -34,7 +34,7 @@ create_and_locate() {
 }
 
 
-bin=(pattern pat3 pat4 pat8)
+bin=(pat pat3 pat4 pat8)
 bit=(3 3 4 8)
 max=(20280 26460 230400 102760448)
 

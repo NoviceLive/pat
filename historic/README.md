@@ -1,9 +1,6 @@
 # Customizable Exploit Pattern Utility
 
 
-[Newer Python version](../). (It uses a different locating method.)
-
-
 ## Installation
 
 This repository is accompanied with prebuilt binaries
