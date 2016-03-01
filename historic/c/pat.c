@@ -18,9 +18,6 @@ print_pattern(unsigned *length, unsigned *printed,
               char **space, unsigned digit_no,
               char *current, unsigned position);
 
-void
-print_array(int *array, unsigned int count, FILE *target);
-
 
 int
 main(int argc, char **argv)
@@ -38,26 +35,19 @@ main(int argc, char **argv)
   if (argc == 2) {
     space = default_profile;
     position_count = default_position_count;
-  }
-  else if (argc > 2) {
+  } else if (argc > 2) {
     space = argv + 2;
     position_count = argc - 1 - 1;
-  }
-  else {
+  } else {
     printf("%s\n", "Invalid Argument!");
     return EXIT_FAILURE;
   }
-
   keyword = argv[1];
-
-  for (int i = 0; i < position_count; ++i)
-    fprintf(stderr, "Position %d: %s\n", i, space[i]);
 
   int radices[position_count];
   get_mixed_radices(space, radices, position_count);
   int max = get_mixed_max(radices, position_count)
     * position_count + position_count;
-  fprintf(stderr, "Capacity: %d\n", max);
 
   if (is_type_string(keyword, isdigit)) {
     errno = 0;
@@ -68,8 +58,6 @@ main(int argc, char **argv)
       return EXIT_FAILURE;
     }
 
-    fprintf(stderr, "Requested: %d\n", length);
-
     if (length > max) {
       printf("Invalid Length\n");
       return EXIT_FAILURE;
@@ -79,25 +67,18 @@ main(int argc, char **argv)
     char current[position_count];
     current[position_count - 1] = '\0';
 
-    fprintf(stderr, "%s", "Pattern: ");
     print_pattern(&length, &printed, space,
                   position_count, current, 0);
     putchar('\n');
-  }
-  else {
+  } else {
     if (!memcmp(keyword, "0x", 2)) {
-      fprintf(stderr, "Hexadecimal: %s\n", keyword);
       keyword = unhex(keyword + 2);
-      fprintf(stderr, "Unhexed: %s\n", keyword);
       reverse_string(keyword, 0, strlen(keyword) - 1);
-      fprintf(stderr, "Reversed: %s\n", keyword);
     }
 
     if (strlen(keyword) >= position_count) {
       keyword[position_count] = 0;
-      fprintf(stderr, "Pattern: %s\n", keyword);
-    }
-    else {
+    } else {
       printf("Invalid Pattern: %s\n", keyword);
       return EXIT_FAILURE;
     }
@@ -106,9 +87,6 @@ main(int argc, char **argv)
 
     if (!check_mixed_string(keyword, space)) {
       adjustment = adjust_mixed_string(keyword, space);
-      fprintf(stderr, "Adjusted: %s\n", keyword);
-      fprintf(stderr, "Adjustment: %u\n", adjustment);
-
       if (!check_mixed_string(keyword, space)) {
         printf("Invalid Pattern: %s\n", keyword);
         return EXIT_FAILURE;
@@ -118,17 +96,10 @@ main(int argc, char **argv)
     int values[position_count];
     get_mixed_values(keyword, space, values);
 
-    fprintf(stderr, "%s", "Radices: ");
-    print_array(radices, position_count, stderr);
-    fprintf(stderr, "%s", "Values: ");
-    print_array(values, position_count, stderr);
-
     unsigned decimal = mixed_to_decimal(radices,
                                         values,
                                         position_count);
     unsigned offset = decimal * position_count + adjustment;
-    fprintf(stderr, "Decimal: %u\n", decimal);
-    fprintf(stderr, "Offset: ");
     printf("%u\n", offset);
   }
 
@@ -149,21 +120,11 @@ print_pattern(unsigned *length, unsigned *printed,
       printf("%c", current[i]);
       (*printed)++;
     }
-  }
-  else {
+  } else {
     for (int i = 0; i < strlen(space[position]); ++i) {
       current[position] = space[position][i];
       print_pattern(length, printed, space,
                     position_count, current, position + 1);
     }
   }
-}
-
-
-void
-print_array(int *array, unsigned int count, FILE *target)
-{
-  for (int i = 0; i < count - 1; ++i)
-    fprintf(target, "%d ", array[i]);
-  fprintf(target, "%d\n", array[count - 1]);
 }

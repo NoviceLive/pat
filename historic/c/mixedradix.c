@@ -3,6 +3,7 @@
  */
 
 
+# include <stdio.h>
 # include <string.h>
 # include <stdbool.h> /* For bool. */
 
@@ -103,14 +104,12 @@ decrement_mixed_string(char *mixed, char **space)
       pos = strcspn(space[i], mixed + i) - 1;
       if (pos < 0) {
         mixed[i] = space[i][strlen(space[i]) - 1];
-      }
-      else {
+      } else {
         mixed[i] = space[i][pos];
         break;
       }
     }
-  }
-  else {
+  } else {
     mixed[digit_no - 1] = space[digit_no - 1][pos];
   }
 

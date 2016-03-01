@@ -1,0 +1,7 @@
+./bin/pat ZzA
+20280
+./bin/pat ZzB
+20280
+./bin/pat ZzC
+20280
+./bin/pat ZzZ
