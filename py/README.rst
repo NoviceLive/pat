@@ -83,9 +83,14 @@ Usage
    ./pat.py --help
    Usage: pat.py [OPTIONS] ARGUMENT [SETS]...
 
+     Customizable Exploit Pattern Utility.
+
    Options:
-     -V, --version  Show the version and exit.
-     -h, --help     Show this message and exit.
+     -V, --version          Show the version and exit.
+     -O, --optimal INTEGER  Use the optimal profile in this position.
+     -o, --output FILENAME  Write to this file.
+     -c, --clipboard        Output to the clipboard.
+     -h, --help             Show this message and exit.
 
 
 Examples
