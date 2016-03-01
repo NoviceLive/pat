@@ -24,12 +24,19 @@ from fn.uniform import zip_longest
 from fn.iters import accumulate
 
 
-def chunked_even(string, group):
+def most_even_chunk(string, group):
     """Divide a string into a list of strings as even as possible."""
     counts = [0] + most_even(len(string), group)
     indices = accumulate(counts)
     slices = window(indices, 2)
     return [string[slice(*one)] for one in slices]
+
+
+def most_even(number, group):
+    """Divide a number into a list of numbers as even as possible."""
+    count, rest = divmod(number, group)
+    counts = zip_longest([count] * group, [1] * rest, fillvalue=0)
+    return [sum(one) for one in counts]
 
 
 def window(seq, count=2):
@@ -41,10 +48,3 @@ def window(seq, count=2):
     for elem in iseq:
         result = result[1:] + (elem,)
         yield result
-
-
-def most_even(number, group):
-    """Divide a number into a list of numbers as even as possible."""
-    count, rest = divmod(number, group)
-    counts = zip_longest([count] * group, [1] * rest, fillvalue=0)
-    return [sum(one) for one in counts]

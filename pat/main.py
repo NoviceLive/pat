@@ -29,7 +29,7 @@ import click
 from pyperclip import copy
 
 from . import __version__, PROGRAM_NAME
-from .utils import chunked_even, window
+from .utils import most_even_chunk, window
 
 
 @click.command(
@@ -48,7 +48,7 @@ def main(argument, sets, optimal, output, clipboard):
     """Customizable Exploit Pattern Utility."""
     space = [ascii_uppercase, ascii_lowercase, digits]
     if optimal:
-        space = chunked_even(''.join(space), optimal)
+        space = most_even_chunk(''.join(space), optimal)
     elif sets:
         space = sets
     patterns = chain.from_iterable(map(''.join, product(*space)))
