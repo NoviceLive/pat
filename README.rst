@@ -2,6 +2,10 @@ Customizable Exploit Pattern Utility
 ====================================
 
 
+.. image:: https://travis-ci.org/NoviceLive/pat.svg?branch=master
+    :target: https://travis-ci.org/NoviceLive/pat
+
+
 `Old C Version <historic/>`_. (It uses a different locating method.)
 
 

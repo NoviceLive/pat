@@ -35,7 +35,7 @@ setup(
     install_requires=['click', 'fn', 'pyperclip'],
     entry_points={
         'console_scripts': [
-            'pat={}.main:main'.format(PACKAGE_NAME)
+            'pat={name}.main:main'.format(name=PACKAGE_NAME)
         ]
     },
 
@@ -44,7 +44,7 @@ setup(
     description='Pat',
     license='GPL-3',
     keywords='Exploit Pattern, Cartesian Product, Mixed Radix',
-    url='https://github.com/NoviceLive/{}'.format(PACKAGE_NAME),
+    url='https://github.com/NoviceLive/' + PACKAGE_NAME,
 
     classifiers=[
         'Development Status :: 4 - Beta',

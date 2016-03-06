@@ -59,7 +59,8 @@ def main(argument, sets, optimal, output, clipboard):
             else:
                 print(pattern)
         else:
-            print('{} Overflows {}!'.format(count, pat.sets))
+            print('{count} Overflows {sets}!'.format(
+                count=count, sets=pat.sets))
             sys.exit(1)
     else:
         target = argument
@@ -67,6 +68,7 @@ def main(argument, sets, optimal, output, clipboard):
         if index:
             print(index)
         else:
-            print('{} Not Found In {}!'.format(target, pat.sets))
+            print('{target} Not Found In {sets}!'.format(
+                target=target, sets=pat.sets))
             sys.exit(1)
     sys.exit(0)
