@@ -41,7 +41,9 @@ from .pat import Pat
               help='Output to the clipboard.')
 def main(argument, sets, optimal, output, clipboard):
     """Customizable Exploit Pattern Utility."""
-    if optimal:
+    if sets and optimal:
+        pat = Pat.from_chars(''.join(sets), optimal)
+    elif optimal:
         pat = Pat.from_chars(optimal=optimal)
     elif sets:
         pat = Pat(sets)
