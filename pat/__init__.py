@@ -25,7 +25,6 @@ __version__ = '0.4.0'
 PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
 
-
 from .pat import Pat
 
 

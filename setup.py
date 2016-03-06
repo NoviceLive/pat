@@ -20,9 +20,12 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 from setuptools import setup
 
-from pat import (
-    PROGRAM_NAME, PACKAGE_NAME, __version__, __author__
-)
+
+__author__ = 'Gu Zhengxiong'
+__version__ = '0.4.0'
+
+PROGRAM_NAME = 'Pat'
+PACKAGE_NAME = 'pat'
 
 
 setup(
