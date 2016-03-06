@@ -62,7 +62,8 @@ class Pat(object):
         """Locate the pattern."""
         space, self.space = tee(self.space)
         if pattern.startswith('0x'):
-            target = unhexlify(pattern[2:]).decode('utf-8')
+            target = unhexlify(
+                pattern[2:].encode('utf-8')).decode('utf-8')
             if not big_endian:
                 target = target[::-1]
         else:
