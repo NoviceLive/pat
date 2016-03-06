@@ -58,11 +58,13 @@ class Pat(object):
             pattern = None
         return pattern
 
-    def locate_pattern(self, pattern):
+    def locate_pattern(self, pattern, big_endian=False):
         """Locate the pattern."""
         space, self.space = tee(self.space)
         if pattern.startswith('0x'):
             target = unhexlify(pattern[2:]).decode('utf-8')
+            if not big_endian:
+                target = target[::-1]
         else:
             target = pattern
         for index, one in enumerate(window(space, self.position)):

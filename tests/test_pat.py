@@ -14,7 +14,8 @@ def test_create_pattern():
 
 def test_locate_pattern():
     tests = {
-        'Aa0': 0, 'Zz9': 20277, 'n2A': 397
+        'Aa0': 0, 'Zz9': 20277, 'n2A': 397,
+        '0x31634130': 62, '0x41326341': 66, '0x63413363': 70
     }
     for one in tests:
-        assert pat.locate_pattern(one) == tests[one]
+        assert pat.locate_pattern(one, big_endian=False) == tests[one]

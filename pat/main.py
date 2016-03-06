@@ -33,13 +33,15 @@ from .pat import Pat
                       '-V', '--version', prog_name=PROGRAM_NAME)
 @click.argument('argument', required=True)
 @click.argument('sets', nargs=-1)
+@click.option('-b', '--big-endian', is_flag=True,
+              help='Use big-endian.')
 @click.option('-O', '--optimal', type=int,
               help='Use the optimal profile in this position.')
 @click.option('-o', '--output', type=click.File('w'),
               help='Write to this file.')
 @click.option('-c', '--clipboard', is_flag=True,
               help='Output to the clipboard.')
-def main(argument, sets, optimal, output, clipboard):
+def main(argument, sets, big_endian, optimal, output, clipboard):
     """Customizable Exploit Pattern Utility."""
     if sets and optimal:
         pat = Pat.from_chars(''.join(sets), optimal)
@@ -66,7 +68,7 @@ def main(argument, sets, optimal, output, clipboard):
             sys.exit(1)
     else:
         target = argument
-        index = pat.locate_pattern(target)
+        index = pat.locate_pattern(target, big_endian)
         if index:
             print(index)
         else:
