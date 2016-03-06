@@ -19,17 +19,12 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import sys
-from itertools import product, chain, islice
-from functools import reduce
-from operator import mul
-from string import digits, ascii_lowercase, ascii_uppercase
-from binascii import unhexlify
 
 import click
 from pyperclip import copy
 
 from . import __version__, PROGRAM_NAME
-from .utils import most_even_chunk, window
+from .pat import Pat
 
 
 @click.command(
@@ -46,38 +41,32 @@ from .utils import most_even_chunk, window
               help='Output to the clipboard.')
 def main(argument, sets, optimal, output, clipboard):
     """Customizable Exploit Pattern Utility."""
-    space = [ascii_uppercase, ascii_lowercase, digits]
     if optimal:
-        space = most_even_chunk(''.join(space), optimal)
+        pat = Pat.from_chars(optimal=optimal)
     elif sets:
-        space = sets
-    patterns = chain.from_iterable(map(''.join, product(*space)))
-    limit = reduce(mul, map(len, space)) * len(space)
+        pat = Pat(sets)
+    else:
+        pat = Pat()
+
     if argument.isdigit():
         count = int(argument)
-        if limit >= count:
-            needed = ''.join(islice(patterns, count))
+        pattern = pat.create_pattern(count)
+        if pattern:
             if output:
-                output.write(needed)
+                output.write(pattern)
             elif clipboard:
-                copy(needed)
+                copy(pattern)
             else:
-                print(needed)
+                print(pattern)
         else:
-            print('Count {} Overflows Space {}!'.format(count, space))
+            print('{} Overflows {}!'.format(count, pat.sets))
             sys.exit(1)
     else:
-        if argument.startswith('0x'):
-            target = unhexlify(argument[2:]).decode('utf-8')
+        target = argument
+        index = pat.locate_pattern(target)
+        if index:
+            print(index)
         else:
-            target = argument
-        found = False
-        for index, one in enumerate(window(patterns, len(space))):
-            if target[:len(space)] == ''.join(one):
-                print(index)
-                found = True
-        if not found:
-            print('Target {} Not Found In Space {}!'.format(
-                target, space))
+            print('{} Not Found In {}!'.format(target, pat.sets))
             sys.exit(1)
     sys.exit(0)
