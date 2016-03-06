@@ -3,3 +3,6 @@
 dist
 *.egg-info
 .sconsign.dblite
+build
+.tox
+.cache

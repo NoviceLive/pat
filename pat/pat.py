@@ -19,7 +19,7 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 
 
 from string import digits, ascii_lowercase, ascii_uppercase
-from itertools import product, chain, islice
+from itertools import product, chain, islice, tee
 from functools import reduce
 from operator import mul
 from binascii import unhexlify
@@ -50,21 +50,22 @@ class Pat(object):
 
     def create_pattern(self, count):
         """Create a pattern of the specified length."""
+        space, self.space = tee(self.space)
         limit = reduce(mul, map(len, self.sets)) * self.position
         if limit >= count:
-            pattern = ''.join(islice(self.space, count))
+            pattern = ''.join(islice(space, count))
         else:
             pattern = None
         return pattern
 
     def locate_pattern(self, pattern):
         """Locate the pattern."""
+        space, self.space = tee(self.space)
         if pattern.startswith('0x'):
             target = unhexlify(pattern[2:]).decode('utf-8')
         else:
             target = pattern
-        print(target)
-        for index, one in enumerate(window(self.space, self.position)):
+        for index, one in enumerate(window(space, self.position)):
             if ''.join(one) == target[:self.position]:
                 return index
         return None
