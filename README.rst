@@ -1,5 +1,5 @@
-Customizable Exploit Pattern Utility
-====================================
+Customizable Lazy Exploit Pattern Utility
+=========================================
 
 
 .. image:: https://travis-ci.org/NoviceLive/pat.svg?branch=master
