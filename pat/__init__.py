@@ -31,18 +31,20 @@ from .pat import Pat
 
 
 __author__ = 'Gu Zhengxiong'
-__version__ = '0.5.0'
+__version__ = '0.5.1'
 
 
 PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
 
 VERSION_PROMPT = (
-    '{}\n\nCopyright 2015-2016 {} <rectigu@gmail.com>\n\n'
+    '{version}\n\nCopyright 2015-2016 {author} '
+    '<rectigu@gmail.com>\n\n'
     'This is free software; see the source for '
     'copying conditions.\nThere is NO warranty; '
     'not even for MERCHANTABILITY nor \nFITNESS FOR '
-    'A PARTICULAR PURPOSE.'.format(__version__, __author__)
+    'A PARTICULAR PURPOSE.'.format(
+        version=__version__, author=__author__)
 )
 
 

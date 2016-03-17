@@ -48,7 +48,7 @@ from .pat import Pat
 @click.option('-q', '--quiet', count=True, help='Be quiet.')
 def main(argument, sets, big_endian, optimal, output, clipboard,
          quiet, verbose):
-    """Customizable Exploit Pattern Utility."""
+    """Customizable Lazy Exploit Pattern Utility."""
     logger = logging.getLogger()
     handler = logging.StreamHandler(sys.stderr)
     handler.setFormatter(LevelFormatter())
@@ -64,9 +64,6 @@ def main(argument, sets, big_endian, optimal, output, clipboard,
     else:
         pat = Pat()
 
-    pat[argument]
-
-    exit()
     if argument.isdigit():
         count = int(argument)
         try:

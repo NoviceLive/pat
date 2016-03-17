@@ -26,13 +26,16 @@ Usage
    ./pat.py --help
    Usage: pat.py [OPTIONS] ARGUMENT [SETS]...
 
-     Customizable Exploit Pattern Utility.
+     Customizable Lazy Exploit Pattern Utility.
 
    Options:
      -V, --version          Show the version and exit.
+     -b, --big-endian       Use big-endian.
      -O, --optimal INTEGER  Use the optimal profile in this position.
      -o, --output FILENAME  Write to this file.
      -c, --clipboard        Output to the clipboard.
+     -v, --verbose          Be verbose.
+     -q, --quiet            Be quiet.
      -h, --help             Show this message and exit.
 
 
@@ -64,14 +67,14 @@ Examples
 
   ::
 
-     ./pat.py 200 ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
+     ./pat.py 200 -O3
      AVqAVrAVsAVtAVuAVvAVwAVxAVyAVzAV0AV1AV2AV3AV4AV5AV6AV7AV8AV9AWqAWrAWsAWtAWuAWvAWwAWxAWyAWzAW0AW1AW2AW3AW4AW5AW6AW7AW8AW9AXqAXrAXsAXtAXuAXvAXwAXxAXyAXzAX0AX1AX2AX3AX4AX5AX6AX7AX8AX9AYqAYrAYsAYtAYuAYvAY
 
 - Search for pattern ``vAY`` in optimal 3-position profile.
 
   ::
 
-     ./pat.py vAY ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
+     ./pat.py vAY -O3
      197
 
 

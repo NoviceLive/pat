@@ -22,7 +22,7 @@ from setuptools import setup
 
 
 __author__ = 'Gu Zhengxiong'
-__version__ = '0.5.0'
+__version__ = '0.5.1'
 
 PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
@@ -45,9 +45,9 @@ setup(
 
     author=__author__,
     author_email='rectigu@gmail.com',
-    description='Pat',
+    description='Customizable Lazy Exploit Pattern Utility',
     license='GPL-3',
-    keywords='Exploit Pattern, Cartesian Product, Mixed Radix',
+    keywords='Exploit Pattern, Cartesian Product',
     url='https://github.com/NoviceLive/' + PACKAGE_NAME,
 
     classifiers=[
