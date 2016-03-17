@@ -28,11 +28,15 @@ PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
 
 
+with open('requirements.txt') as stream:
+    requirements = stream.read().splitlines()
+
+
 setup(
     name=PROGRAM_NAME,
     version=__version__,
     packages=[PACKAGE_NAME],
-    install_requires=['click', 'fn', 'pyperclip'],
+    install_requires=requirements,
     entry_points={
         'console_scripts': [
             'pat={name}.main:main'.format(name=PACKAGE_NAME)

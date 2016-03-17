@@ -1,3 +1,5 @@
 click
+colorama
+flufl.i18n
 fn
 pyperclip

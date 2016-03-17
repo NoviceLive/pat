@@ -18,6 +18,8 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+from __future__ import division, absolute_import, print_function
+from logging import getLogger
 from string import digits, ascii_lowercase, ascii_uppercase
 from itertools import product, chain, islice, tee
 from functools import reduce
@@ -27,6 +29,7 @@ from binascii import unhexlify
 from .utils import most_even_chunk, window
 
 
+logging = getLogger(__name__)
 ALNUM = [ascii_uppercase, ascii_lowercase, digits]
 
 
@@ -35,6 +38,7 @@ class Pat(object):
     def __init__(self, sets=None):
         if not sets:
             sets = ALNUM
+        logging.debug('sets: %s', sets)
         self.sets = sets
         self.position = len(sets)
         self.space = self._create_space()
@@ -52,11 +56,12 @@ class Pat(object):
         """Create a pattern of the specified length."""
         space, self.space = tee(self.space)
         limit = reduce(mul, map(len, self.sets)) * self.position
+        logging.debug('limit: %s', limit)
         if limit >= count:
-            pattern = ''.join(islice(space, count))
+            return ''.join(islice(space, count))
         else:
-            pattern = None
-        return pattern
+            raise OverflowError('{count} Overflows {sets}!'.format(
+                count=count, sets=self.sets))
 
     def locate_pattern(self, pattern, big_endian=False):
         """Locate the pattern."""
@@ -71,7 +76,8 @@ class Pat(object):
         for index, one in enumerate(window(space, self.position)):
             if ''.join(one) == target[:self.position]:
                 return index
-        return None
+        raise KeyError('{target} Not Found In {sets}!'.format(
+            target=pattern, sets=self.sets))
 
     def _create_space(self):
         """Create the space used by creating and locating."""

@@ -18,6 +18,16 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+from __future__ import division, absolute_import, print_function
+from logging import Handler, getLogger
+try:
+    from logging import NullHandler
+except ImportError:
+    class NullHandler(Handler):
+        def emit(self, record):
+            pass
+
+
 __author__ = 'Gu Zhengxiong'
 __version__ = '0.4.1'
 
@@ -29,3 +39,6 @@ from .pat import Pat
 
 
 __all__ = ['Pat']
+
+
+getLogger(__name__).addHandler(NullHandler())

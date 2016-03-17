@@ -18,6 +18,7 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+from __future__ import division, absolute_import, print_function
 from .main import main
 
 

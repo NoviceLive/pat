@@ -18,12 +18,15 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+from __future__ import division, absolute_import, print_function
+import logging
 import sys
 
 import click
 from pyperclip import copy
 
 from . import __version__, PROGRAM_NAME
+from .init import LevelFormatter, _
 from .pat import Pat
 
 
@@ -41,8 +44,17 @@ from .pat import Pat
               help='Write to this file.')
 @click.option('-c', '--clipboard', is_flag=True,
               help='Output to the clipboard.')
-def main(argument, sets, big_endian, optimal, output, clipboard):
+@click.option('-v', '--verbose', count=True, help='Be verbose.')
+@click.option('-q', '--quiet', count=True, help='Be quiet.')
+def main(argument, sets, big_endian, optimal, output, clipboard,
+         quiet, verbose):
     """Customizable Exploit Pattern Utility."""
+    logger = logging.getLogger()
+    handler = logging.StreamHandler(sys.stderr)
+    handler.setFormatter(LevelFormatter())
+    logger.addHandler(handler)
+    logger.setLevel(logging.WARNING + (quiet-verbose)*10)
+
     if sets and optimal:
         pat = Pat.from_chars(''.join(sets), optimal)
     elif optimal:
@@ -54,25 +66,26 @@ def main(argument, sets, big_endian, optimal, output, clipboard):
 
     if argument.isdigit():
         count = int(argument)
-        pattern = pat.create_pattern(count)
-        if pattern:
+        try:
+            pattern = pat.create_pattern(count)
+        except OverflowError:
+            logging.exception(_('Failed to create the pattern.'))
+            sys.exit(1)
+        else:
             if output:
                 output.write(pattern)
             elif clipboard:
                 copy(pattern)
             else:
                 print(pattern)
-        else:
-            print('{count} Overflows {sets}!'.format(
-                count=count, sets=pat.sets))
-            sys.exit(1)
     else:
         target = argument
-        index = pat.locate_pattern(target, big_endian)
-        if index:
-            print(index)
-        else:
-            print('{target} Not Found In {sets}!'.format(
-                target=target, sets=pat.sets))
+        try:
+            index = pat.locate_pattern(target, big_endian)
+        except KeyError:
+            logging.exception(_('Failed to locate the pattern.'))
             sys.exit(1)
+        else:
+            print(index)
+
     sys.exit(0)

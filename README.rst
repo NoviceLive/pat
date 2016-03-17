@@ -96,7 +96,7 @@ Default Profile
 
 - Three-position: The most popular choice
 
-  - Maximum Length: 20280 B = 19 KiB.
+  - Maximum Length: 26 * 26 * 10 * 3 B = 20280 B >= 19 KiB.
 
   ::
 

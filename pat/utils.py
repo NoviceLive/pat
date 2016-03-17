@@ -18,10 +18,15 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
+from __future__ import division, absolute_import, print_function
+from logging import getLogger
 from itertools import islice
 
 from fn.uniform import zip_longest
 from fn.iters import accumulate
+
+
+logging = getLogger(__name__)
 
 
 def most_even_chunk(string, group):
@@ -36,7 +41,9 @@ def most_even(number, group):
     """Divide a number into a list of numbers as even as possible."""
     count, rest = divmod(number, group)
     counts = zip_longest([count] * group, [1] * rest, fillvalue=0)
-    return [sum(one) for one in counts]
+    chunks = [sum(one) for one in counts]
+    logging.debug('chunks: %s', chunks)
+    return chunks
 
 
 def window(seq, count=2):
