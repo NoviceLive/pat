@@ -52,7 +52,15 @@ class Pat(object):
         sets = most_even_chunk(chars, optimal)
         return cls(sets)
 
-    def create_pattern(self, count):
+    def __getitem__(self, key):
+        if str(key).isdigit():
+            count = int(key)
+            return self.create(count)
+        else:
+            target = key
+            return self.locate(target, big_endian=False)
+
+    def create(self, count):
         """Create a pattern of the specified length."""
         space, self.space = tee(self.space)
         limit = reduce(mul, map(len, self.sets)) * self.position
@@ -60,10 +68,10 @@ class Pat(object):
         if limit >= count:
             return ''.join(islice(space, count))
         else:
-            raise OverflowError('{count} Overflows {sets}!'.format(
+            raise IndexError('{count} Overflows {sets}!'.format(
                 count=count, sets=self.sets))
 
-    def locate_pattern(self, pattern, big_endian=False):
+    def locate(self, pattern, big_endian=False):
         """Locate the pattern."""
         space, self.space = tee(self.space)
         if pattern.startswith('0x'):

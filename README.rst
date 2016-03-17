@@ -75,6 +75,13 @@ Examples
      197
 
 
+API
+---
+
+
+See ``pydoc pat.Pat``.
+
+
 Mathematical Background
 -----------------------
 

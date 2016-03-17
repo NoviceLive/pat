@@ -25,14 +25,14 @@ import sys
 import click
 from pyperclip import copy
 
-from . import __version__, PROGRAM_NAME
+from . import VERSION_PROMPT, PROGRAM_NAME
 from .init import LevelFormatter, _
 from .pat import Pat
 
 
 @click.command(
     context_settings=dict(help_option_names=['-h', '--help']))
-@click.version_option(__version__,
+@click.version_option(VERSION_PROMPT,
                       '-V', '--version', prog_name=PROGRAM_NAME)
 @click.argument('argument', required=True)
 @click.argument('sets', nargs=-1)
@@ -64,11 +64,14 @@ def main(argument, sets, big_endian, optimal, output, clipboard,
     else:
         pat = Pat()
 
+    pat[argument]
+
+    exit()
     if argument.isdigit():
         count = int(argument)
         try:
-            pattern = pat.create_pattern(count)
-        except OverflowError:
+            pattern = pat.create(count)
+        except IndexError:
             logging.exception(_('Failed to create the pattern.'))
             sys.exit(1)
         else:
@@ -81,7 +84,7 @@ def main(argument, sets, big_endian, optimal, output, clipboard,
     else:
         target = argument
         try:
-            index = pat.locate_pattern(target, big_endian)
+            index = pat.locate(target, big_endian)
         except KeyError:
             logging.exception(_('Failed to locate the pattern.'))
             sys.exit(1)

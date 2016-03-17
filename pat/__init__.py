@@ -27,15 +27,23 @@ except ImportError:
         def emit(self, record):
             pass
 
+from .pat import Pat
+
 
 __author__ = 'Gu Zhengxiong'
-__version__ = '0.4.1'
+__version__ = '0.5.0'
 
 
 PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
 
-from .pat import Pat
+VERSION_PROMPT = (
+    '{}\n\nCopyright 2015-2016 {} <rectigu@gmail.com>\n\n'
+    'This is free software; see the source for '
+    'copying conditions.\nThere is NO warranty; '
+    'not even for MERCHANTABILITY nor \nFITNESS FOR '
+    'A PARTICULAR PURPOSE.'.format(__version__, __author__)
+)
 
 
 __all__ = ['Pat']
