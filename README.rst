@@ -96,7 +96,9 @@ Default Profile
 
 - Three-position: The most popular choice
 
-  - Maximum Length: 26 * 26 * 10 * 3 B = 20280 B >= 19 KiB.
+  - Maximum Length
+
+    26 :sup:`2` * 10 * 3 B = 20280 B = 19 KiB.
 
   ::
 
@@ -116,7 +118,9 @@ fixed radix systems will achieve the best length.
 Three-position
 ______________
 
-- Maximum Length: 26460 B = 25 KiB
+- Maximum Length
+
+  21 :sup:`2` * 20 * 3 B = 26460 B = 25 KiB
 
 ::
 
@@ -125,7 +129,9 @@ ______________
 Four-position
 _____________
 
-- Maximum Length: 230400 B = 225 KiB
+- Maximum Length
+
+  16 :sup:`2` * 15 :sup:`2` * 4 B = 230400 B = 225 KiB
 
 ::
 
@@ -135,7 +141,9 @@ _____________
 Eight-position
 ______________
 
-- Maximum Length: 102760448 B = 98 MiB
+- Maximum Length
+
+  8 :sup:`6` * 7 :sup:`2` * 8 B = 102760448 B = 98 MiB
 
 ::
 

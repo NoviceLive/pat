@@ -25,10 +25,14 @@ import os
 from colorama import Fore, Style
 from pkg_resources import resource_filename
 from flufl.i18n import initialize
+from fn import _ as X
 
 
-os.environ['LOCPATH'] = resource_filename(__name__, 'share')
-_ = initialize('pat')
+try:
+    os.environ['LOCPATH'] = resource_filename(__name__, 'share')
+    _ = initialize('pat')
+except KeyError:
+    _ = X
 
 
 def red(text):
