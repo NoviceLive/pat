@@ -58,9 +58,11 @@ Examples
 
 - Locate the pattern in hex, ``0x5a6232``, using the default profile.
 
+  For big-endian systems.
+
   ::
 
-     ./pat.py 0x5a6232
+     ./pat.py 0x5a6232 -b
      19536
 
 - Create a pattern of length 200 in optimal 3-position profile.
