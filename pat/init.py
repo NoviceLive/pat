@@ -24,15 +24,17 @@ import os
 
 from colorama import Fore, Style
 from pkg_resources import resource_filename
-from flufl.i18n import initialize
-from fn import _ as X
+try:
+    from flufl.i18n import initialize
+except ImportError:
+    pass
 
 
 try:
     os.environ['LOCPATH'] = resource_filename(__name__, 'share')
     _ = initialize('pat')
-except KeyError:
-    _ = X
+except (KeyError, NameError):
+    _ = lambda x: x
 
 
 def red(text):
@@ -56,9 +58,7 @@ def green(text):
 
 
 class LevelFormatter(Formatter):
-    """
-    Logging formatter.
-    """
+    """Logging formatter."""
     critical_formatter = Formatter(red('critical: %(message)s'))
     error_formatter = Formatter(red('error: %(message)s'))
     warning_formatter = Formatter(yellow('warning: %(message)s'))
@@ -71,9 +71,7 @@ class LevelFormatter(Formatter):
         Formatter.__init__(self)
 
     def format(self, record):
-        """
-        Format the record using the corresponding formatter.
-        """
+        """Format the record using the corresponding formatter."""
         if record.levelno == DEBUG:
             return self.debug_formatter.format(record)
         if record.levelno == INFO:

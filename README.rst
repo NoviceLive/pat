@@ -1,9 +1,11 @@
 Customizable Lazy Exploit Pattern Utility
 =========================================
 
+.. image:: https://img.shields.io/pypi/v/nine.svg
+   :target: https://pypi.python.org/pypi/Pat
 
 .. image:: https://travis-ci.org/NoviceLive/pat.svg?branch=master
-    :target: https://travis-ci.org/NoviceLive/pat
+   :target: https://travis-ci.org/NoviceLive/pat
 
 
 Old Version In C
@@ -16,6 +18,35 @@ Installation
 ------------
 
 ``pip install pat`` works, elevate privilege if necessary.
+
+Requirements
+++++++++++++
+
+Click_
+******
+Python composable command line utility.
+
+Colorama_
+*********
+
+Simple cross-platform colored terminal text in Python.
+
+Pyperclip_
+**********
+
+Python module for cross-platform clipboard functions.
+
+fn_
+***
+
+Functional programming in Python: implementation of missing features to enjoy FP.
+
+flufl.i18n_
+***********
+
+A high level API for Python internationalization.
+
+This is not used for the time being.
 
 
 Usage
@@ -128,7 +159,7 @@ fixed radix systems will achieve the best length.
 
 
 Three-position
-______________
+**************
 
 - Maximum Length
 
@@ -139,7 +170,7 @@ ______________
    ABCDEFGHIJKLMNOPQRSTU VWXYZabcdefghijklmnop qrstuvwxyz0123456789
 
 Four-position
-_____________
+*************
 
 - Maximum Length
 
@@ -151,7 +182,7 @@ _____________
 
 
 Eight-position
-______________
+**************
 
 - Maximum Length
 
@@ -167,3 +198,9 @@ ______________
 .. _Cartesian product: https://en.wikipedia.org/wiki/Cartesian_product
 
 .. _inequality of arithmetic and geometric means: https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means
+
+.. _Colorama: https://github.com/tartley/colorama
+.. _Click: https://github.com/mitsuhiko/click
+.. _fn: https://github.com/kachayev/fn.py
+.. _Pyperclip: https://github.com/asweigart/pyperclip
+.. _flufl.i18n: https://gitlab.com/warsaw/flufl.i18n
