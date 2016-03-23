@@ -1,7 +1,7 @@
 Customizable Lazy Exploit Pattern Utility
 =========================================
 
-.. image:: https://img.shields.io/pypi/v/nine.svg
+.. image:: https://img.shields.io/pypi/v/pat.svg
    :target: https://pypi.python.org/pypi/Pat
 
 .. image:: https://travis-ci.org/NoviceLive/pat.svg?branch=master
