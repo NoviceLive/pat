@@ -8,10 +8,25 @@ Customizable Lazy Exploit Pattern Utility
    :target: https://travis-ci.org/NoviceLive/pat
 
 
-Old Version In C
-----------------
+Latest Updates
+--------------
 
-`Old C Version <historic/>`_. (It uses a different locating method.)
+I learned from pwntools_ that there is another kind of sequences,
+named `De Bruijn sequence`_,
+which is powerful and has excessive potentials.
+
+Check it if you are interested.
+
+Its pattern looks like the following as produced by ``cyclic``
+provided by pwntools_.
+
+::
+
+   $ cyclic 400
+   aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaacoaacpaacqaacraacsaactaacuaacvaacwaacxaacyaaczaadbaadcaaddaadeaadfaadgaadhaadiaadjaadkaadlaadmaadnaadoaadpaadqaadraadsaadtaaduaadvaadwaadxaadyaad
+
+   $ cyclic -l yaad
+   396
 
 
 Installation
@@ -204,3 +219,5 @@ Eight-position
 .. _fn: https://github.com/kachayev/fn.py
 .. _Pyperclip: https://github.com/asweigart/pyperclip
 .. _flufl.i18n: https://gitlab.com/warsaw/flufl.i18n
+.. _pwntools: https://github.com/Gallopsled/pwntools
+.. _De Bruijn sequence: https://en.wikipedia.org/wiki/De_Bruijn_sequence
