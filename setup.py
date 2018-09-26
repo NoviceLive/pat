@@ -22,7 +22,7 @@ from setuptools import setup
 
 
 __author__ = 'Gu Zhengxiong'
-__version__ = '0.5.1'
+__version__ = '0.5.2'
 
 PROGRAM_NAME = 'Pat'
 PACKAGE_NAME = 'pat'
