@@ -6,3 +6,6 @@ dist
 build
 .tox
 .cache
+
+
+githooks/pre-commit
