@@ -8,6 +8,14 @@ Customizable Lazy Exploit Pattern Utility
    :target: https://travis-ci.org/NoviceLive/pat
 
 
+Official Mirrors
+----------------
+
+- https://gitlab.com/imtheforce/pat
+- https://bitbucket.org/fourthorigin/pat
+- https://github.com/NoviceLive/pat
+
+
 Latest Updates
 --------------
 
