@@ -59,10 +59,6 @@ Pyperclip_
 
 Python module for cross-platform clipboard functions.
 
-fn_
-***
-
-Functional programming in Python: implementation of missing features to enjoy FP.
 
 flufl.i18n_
 ***********
@@ -224,7 +220,6 @@ Eight-position
 
 .. _Colorama: https://github.com/tartley/colorama
 .. _Click: https://github.com/mitsuhiko/click
-.. _fn: https://github.com/kachayev/fn.py
 .. _Pyperclip: https://github.com/asweigart/pyperclip
 .. _flufl.i18n: https://gitlab.com/warsaw/flufl.i18n
 .. _pwntools: https://github.com/Gallopsled/pwntools

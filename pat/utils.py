@@ -21,9 +21,37 @@ along with Pat.  If not, see <http://www.gnu.org/licenses/>.
 from __future__ import division, absolute_import, print_function
 from logging import getLogger
 from itertools import islice
+from sys import version_info
 
-from fn.uniform import zip_longest
-from fn.iters import accumulate
+
+# zip_longest & accumulate handling taken from fn.py
+
+if version_info[0] == 2:
+    from itertools import izip_longest as zip_longest
+else:
+    from itertools import zip_longest
+
+
+if version_info[0] == 3 and version_info[1] >= 3:
+    from itertools import accumulate
+else:
+    def accumulate(iterable, func=add):
+        """Make an iterator that returns accumulated sums.
+        Elements may be any addable type including Decimal or Fraction.
+        If the optional func argument is supplied, it should be a
+        function of two arguments and it will be used instead of addition.
+
+        Origin implementation:
+        http://docs.python.org/dev/library/itertools.html#itertools.accumulate
+
+        Backported to work with all python versions (< 3.3)
+        """
+        it = iter(iterable)
+        total = next(it)
+        yield total
+        for element in it:
+            total = func(total, element)
+            yield total
 
 
 logging = getLogger(__name__)
